@@ -1,6 +1,7 @@
 #recipe-flex-column {
   padding-left: 28%;
 }
+
 #recipe-flex-column > div > h3 {
   margin: 5rem auto;
 }
