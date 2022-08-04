@@ -1,0 +1,10 @@
+<div class="text-center">
+  <%= button_to "Add a new recipe", new_user_recipe_path(current_user.id), method: :get, class: "btn btn-success mt-3 text-center text-dark btn-lg active" %>
+</div>
+<div class="container">
+  <% @recipes.each_with_index do |recipe, index| %>
+    <%= link_to user_recipe_path(current_user.id, recipe.id), class:"text-dark text-decoration-none"  do %>
+        <%= render partial: "recipe" , locals: { recipe: recipe, index: index } %>
+    <% end %> 
+  <% end %>
+</div>
