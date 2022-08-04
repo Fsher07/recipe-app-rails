@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @recipes = Recipe.all
   end
@@ -24,10 +26,21 @@ class RecipesController < ApplicationController
     end
   end
 
+  def update_status
+    @recipe = Recipe.find(params[:id])
+    @recipe.public = if @recipe.public
+                       false
+                     else
+                       true
+                     end
+    @recipe.save
+    redirect_to user_recipe_url(current_user.id, @recipe.id), notice: "Public status changed to #{@recipe.public}."
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to user_url[:id]
+    redirect_to user_recipes_url(current_user)
   end
 
   private

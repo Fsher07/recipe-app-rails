@@ -3,8 +3,13 @@
 </div>
 <div class="container">
   <% @recipes.each_with_index do |recipe, index| %>
-    <%= link_to user_recipe_path(current_user.id, recipe.id), class:"text-dark text-decoration-none"  do %>
+    <div class="card mt-4 p-4">
+      <%= link_to user_recipe_path(current_user.id, recipe.id), class:"text-dark text-decoration-none"  do %>
         <%= render partial: "recipe" , locals: { recipe: recipe, index: index } %>
-    <% end %> 
+      <% end %> 
+      <% if can? :destroy, recipe%>
+        <%= button_to "REMOVE", user_recipe_path(current_user.id, recipe.id), method: :delete, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
   <% end %>
 </div>
