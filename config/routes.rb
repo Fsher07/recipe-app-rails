@@ -11,4 +11,5 @@ Rails.application.routes.draw do
     end
   end
   root 'home#index'
+  resources :public_recipes, only: [:index]
 end
