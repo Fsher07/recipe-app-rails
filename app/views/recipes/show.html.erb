@@ -1,0 +1,3 @@
+<section>
+<%= render partial: 'recipe_details', locals: {recipe: @recipe.id, number: current_user.recipes.find(@recipe.id)} %>
+</section>

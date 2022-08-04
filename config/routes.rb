@@ -2,8 +2,14 @@
 
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+ 
+  resources :users, only: [:index, :show] do
+    resources :recipes, only: [:index, :show, :new, :create, :destroy, :edit ] do
+      member do
+        patch :update_status
+      end
+    end
+  end
   root 'home#index'
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :public_recipes, only: [:index]
 end
