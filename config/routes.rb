@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :recipe_foods
+  resources :foods
   devise_for :users, controllers: { registrations: 'registrations' }
  
   resources :users, only: [:index, :show] do

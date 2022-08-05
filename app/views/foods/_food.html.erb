@@ -1,0 +1,32 @@
+<div id="<%= dom_id food %>">
+  
+  <div class="card">
+  <h5 class="card-header">Name: <%= food.name%></h5>
+  <div class="card-body">
+    <h5 class="card-title">Measurment unit:<%= food.measurement_unit %></h5>
+    <p class="card-text">Price: <%= food.price %></p>
+    <p class="card-text"> Quantity: <%= food.quantity %></p>
+    <a href="#" class="btn btn-primary"><%= link_to "Back to foods", foods_path %></a>
+  </div>
+</div>
+  <p>
+    <strong>Name:</strong>
+    <%= food.name %>
+  </p>
+
+  <p>
+    <strong>Measurement unit:</strong>
+    <%= food.measurement_unit %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= food.price %>
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    <%= food.quantity %>
+  </p>
+
+</div>

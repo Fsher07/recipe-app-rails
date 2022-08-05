@@ -3,10 +3,12 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @foods = Food.all
   end
 
   def show
     @recipe = Recipe.find(params[:id])
+    @foods = Food.all
   end
 
   def new

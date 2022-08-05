@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :recipes, foreign_key: 'user_id', dependent: :destroy
-  validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: 'only allows letters' }
+  has_many :foods, foreign_key: 'user_id', dependent: :destroy
+  # validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: 'only allows letters' }
 
   def recent_recipes
     recipes.order(created_at: :desc)
