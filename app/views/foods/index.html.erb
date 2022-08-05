@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+<div class="text-center mb-1 pb-1">
+
+<button type="button" class="btn btn-outline-primary " style="float-right"><%= link_to "New food", new_food_path, class:"float-right" %> </button>
+</div>
+<table class="table table-dark table-striped mx-auto" style="width:800px;">
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Measurement unit </th>
+      <th>unit price</th>
+      <th>action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td><%= food.price %></td>
+       
+        <td>  <%= button_to "Delete", food, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
