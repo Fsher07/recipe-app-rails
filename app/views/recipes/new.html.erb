@@ -2,7 +2,7 @@
 
 <div class="container">
 
-  <%= form_with model: @recipe, url: user_recipes_path, method: :post, local: true, class:"form" do |form| %>
+  <%= form_with model: @recipe, url: recipes_path, method: :post, local: true, class:"form" do |form| %>
     
     <div class="mb-3">
       <%= form.label :name, class:"form-label" %>

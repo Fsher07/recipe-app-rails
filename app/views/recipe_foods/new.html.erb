@@ -1,9 +1,43 @@
-<h1>New recipe food</h1>
+<div class="row d-flex justify-content-center">
+<h1 class='text-center'>New Ingredient</h1>
 
-<%= render "form", recipe_food: @recipe_food %>
+<div class="w-50">
+<%= form_with model: @recipe_food, url: recipe_recipe_foods_path(recipe_id:params[:recipe_id]),method: :'post' do |form| %>
+  <div class="col-md-12">
+    <% if @recipe_food.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@recipe_food.errors.count, "error") %> prohibited this recipe from being saved:</h2>
 
-<br>
+        <ul>
+          <% @recipe_food.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <ul class="list-group">
+      <% @foods.each do |f|%>
+          <li class="list-group-item d-flex justify-content-between align-items-center"><%= f.name %><span class="text-secondary badge-pill">Id-<%= f.id %></span></li>
+      <%end%>     
+   </ul>
+  
+  <div class='my-2 text-secondary'>
+    <%= form.label :food_id, 'Food',class:'text-secondary mx-1' %>
+    <%= form.select :food_id ,@foods.map { |f| [f.name, f.id] }%>
+    <%= form.label :quantity, 'Quantity' ,class:'text-secondary mx-1'%>
+    <%= form.number_field :quantity %>
+  </div>
 
-<div>
-  <%= link_to "Back to recipe foods", recipe_foods_path %>
+  <div class='mt-2'>
+    <%= form.submit 'Add Ingredient',class: "btn btn-secondary"%>
+  </div>
+   
+  </div>
+
+  <div class='mb-3'>
+    <%= link_to "Back to recipe", recipe_path(id:params[:recipe_id]) %>
+  </div>
+<% end %>
+</div>
+
 </div>

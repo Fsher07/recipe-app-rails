@@ -11,6 +11,12 @@ class User < ApplicationRecord
     recipes.order(created_at: :desc)
   end
 
+  def is?(role)
+    self.role == role.to_s
+  end
+
+  enum role: %i[default admin]
+
   def admin?
     # role == requested.role.to_s
     :role == 'admin'
