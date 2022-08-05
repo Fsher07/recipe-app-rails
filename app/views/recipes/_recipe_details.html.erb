@@ -1,12 +1,14 @@
-<h1 class="text-center">Recipe <%= current_user.recipes.find_index(number) + 1 %></h1>
+<h1 class="text-center mb-5"><%= @recipe.name %> Recipe</h1>
 
 <div class="d-flex align-items-center justify-content-evenly">
   <h3>Preparation time: <%= @recipe.prep_time%></h3>
   <div>
-    <%= button_to "Switch Public Status", update_status_user_recipe_path(current_user.id, @recipe.id), method: :patch, class: "btn btn-secondary" %>
-    <div class="bg-success text-white">
-    <%= flash[:notice] %>
-    </div>
+      <%if can? :update,@recipe%>
+      <%= form_with model: @recipe, url: update_status_recipe_path(@recipe.id), method: :patch, class:"form-check form-switch" do |form| %> 
+        <%= form.check_box :public?,role: "switch",class: "form-check-input",onchange:'this.form.submit();'%>
+        <%= form.label :public ,class:"form-check-label "%>
+      <%end%>
+    <%end%>
   </div>
 </div>
 
@@ -14,12 +16,14 @@
   <div>
     <h3>Cooking time: <%= @recipe.cook_time%></h3>
     <h3>Steps go here:</h3>
-    <p><%= @recipe.steps %></p>
   </div>
 </div>
-<div class="text-center">
-  <button class="btn btn-success mb-1">General shopping list</button>
-</div>
+<%if can? :manage,@recipe%>
+    <div class='d-flex flex-row justify-content-center gap-5'>
+      <%= link_to 'Generate shoping list',recipe_shopping_list_path(id:@recipe.id),method: :get,class:"btn btn-secondary"%>
+      <%= link_to 'Add Ingredient',new_recipe_recipe_food_path(recipe_id:@recipe.id),method: :get,class:"btn btn-secondary"%>
+    </div>
+  <%end%>
 <table class="table table-dark table-striped mx-auto mt-1" style="width:800px;">
   <thead>
     <tr>
@@ -29,15 +33,19 @@
       <th>action</th>
     </tr>
   </thead>
-  <tbody>
-    <% @foods.each do |food| %>
+    <tbody>
+    <% @recipe_foods.each do |recipe_food|%>
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.quantity %></td>
-        <td><%= food.quantity * food.price %></td>
-       
-        <td>  <%= button_to "Delete", food, method: :delete %></td>
+        <td class="table-secondary px-3 py-2"><%= recipe_food.food.name %></td>
+        <td class="table-secondary px-3 py-2"><%= recipe_food.quantity %></td>
+        <td class="table-secondary px-3 py-2"><%= recipe_food.food.price * recipe_food.quantity %></td>
+        <%if can? :manage,@recipe%>
+        <td class="table-secondary d-flex flex-row gap-1 justify-content-center px-3 py-2">
+          <%= link_to 'Edit',edit_recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id),method: :get,class:"btn btn-secondary"%>
+          <%= button_to 'Remove',recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id),method: :delete,class:"btn btn-secondary"%>
+        </td>
+        <%end%>
       </tr>
-    <% end %>
+    <%end%>
   </tbody>
 </table>
