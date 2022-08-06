@@ -1,0 +1,10 @@
+<h2>
+  <%= recipe.name %>
+</h2>
+<h5>
+  By:  <%= recipe.user.name %>
+</h5>
+ <div class='d-flex flex-row justify-content-between'>
+    <p class='text-secondary h5'>Amount of food items to buy : <%=@recipe_foods.where(recipe_id: recipe.id).count%></p>
+    <p class='text-secondary h5'>Total value of food needed :  $<%@recipe_foods.where(recipe_id: recipe.id).each do |recipe_food| @total_price += recipe_food.quantity * recipe_food.food.price%><%end%><%= @total_price%></p>
+  </div>

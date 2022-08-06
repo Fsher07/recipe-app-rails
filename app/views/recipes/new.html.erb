@@ -1,0 +1,43 @@
+<h2 class="text-center">Add a new recipe</h2>
+
+<div class="container">
+
+  <%= form_with model: @recipe, url: recipes_path, method: :post, local: true, class:"form" do |form| %>
+    
+    <div class="mb-3">
+      <%= form.label :name, class:"form-label" %>
+      <%= form.text_field :name, class:"form-control", placeholder: "Recipe name" %>
+    </div>
+
+    
+    <div class="mb-3">
+      <%= form.label :description, class:"form-label" %>
+      <%= form.text_area :description, class:"form-control", placeholder: "Desciription" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.number_field :prep_time, in: 0..10.0, step: 0.25 %>
+      <%= form.label :prep_time, "Preparation time" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.number_field :cook_time, in: 0..10.0, step: 0.25 %>
+      <%= form.label :cook_time, "Cooking time" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :steps, class:"form-label" %>
+      <%= form.text_area :steps, class:"form-control", placeholder: "Steps" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :public, "Make your recipe public:" %>
+      <%= form.radio_button :public, true %>
+      <%= form.label :public, "Yes" %>
+      <%= form.radio_button :public, false %>
+      <%= form.label :public, "No" %>
+    </div>
+
+    <%= form.submit :Complete, class:"btn btn-primary" %>
+  <%end%>
+</div>

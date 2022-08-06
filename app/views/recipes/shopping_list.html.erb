@@ -1,0 +1,29 @@
+<div class='d-flex flex-column px-5 gap-3 w-75 m-auto'>
+  <h2 class='my-2 text-center text-danger'>Shopping List</h2>
+  
+  <div class='d-flex flex-row justify-content-between'>
+    <p class='text-secondary h5'>Amount of food items to buy : <%=@total_items.to_f%></p>
+    <p class='text-secondary h5'>Total value of food needed :  $<%=@total_price%></p>
+  </div>
+  <table class="table table-dark table-striped mx-auto mt-1">
+    <tr class="table-secondary">
+      <th class="table-secondary">Food</th>
+      <th class="table-secondary">Quantity</th>
+      <th class="table-secondary">Price</th>
+    </tr>
+    <tbody>
+      <% @recipe_foods.each do |recipe_food|%>
+        <tr>
+          <td class="table-secondary"><%= recipe_food.food.name %></td>
+          <td class="table-secondary"><%= recipe_food.quantity %></td>
+          <td class="table-secondary"><%= recipe_food.food.price * recipe_food.quantity %></td>
+          
+        </tr>
+      <%end%>
+    </tbody>
+    
+  </table>
+  <div>
+  <%= link_to 'Back to recipe', recipe_path(id:@recipe.id),method: :get,class:"btn btn-secondary "%>
+  </div>
+</div>

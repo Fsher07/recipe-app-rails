@@ -1,0 +1,9 @@
+<div class="container">
+  <% @public_recipes.each_with_index do |recipe, index| %>
+    <div class="card mt-4 p-4">
+      <%= link_to recipe_path(recipe.id), class:"text-dark text-decoration-none"  do %>
+        <%= render partial: "recipe" , locals: { recipe: recipe, index: index } %>
+      <% end %> 
+    </div>
+  <% end %>
+</div>

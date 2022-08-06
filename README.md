@@ -1,73 +1,60 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Recipe application with Rails
 
-> Description the project.
 
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- Ruby
+- Ruby on rails
+- Postgresql
 
-## Live Demo (if available)
+## Get Started
 
-[Live Demo Link](https://livedemo.com)
+Get a local copy of project by cloning this repository, git clone https://github.com/Fsher07/recipe-app-rails.git
 
+### Available Scripts
 
-## Getting Started
+In the project directory, you can run:
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
+**`Gem install rails`**
 
+Gets all the required dependencies of the projects.
 
-To get a local copy up and running follow these simple example steps.
+**`bundle install`**
 
-### Prerequisites
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
 
 ## Authors
 
-👤 **Author1**
+👤 **Melaku Eshetu**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@Melaku05](https://github.com/Melaku05)
+- Twitter: [@eshetu](https://www.linkedin.com/in/melaku-eshetu/)
+- LinkedIn: [@Melaku Eshetu](https://www.linkedin.com/in/melaku-eshetu/)
 
-👤 **Author2**
+👤 **Eshetu Melaku**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@Fsher07](https://github.com/Fsher07)
+- Twitter: [@furkansalimhdr1](https://twitter.com/furkansalimhdr1)
+- LinkedIn: [Furkan Salim Hıdır](https://www.linkedin.com/in/fsalimhidir/)
+
+## Acknowledgments
+
+- [Microverse](https://www.microverse.org/)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Fsher07/recipe-app-rails/issues).
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
-## 📝 License
-
-This project is [MIT](./MIT.md) licensed.
